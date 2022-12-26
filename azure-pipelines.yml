@@ -10,14 +10,24 @@ pool:
   vmImage: ubuntu-latest
 
 steps:
+
+- task: Cache@2
+  displayName: "Cache Packages"
+  inputs:
+    key: 'gradle-cache'
+    path: '$(System.DefaultWorkingDirectory)/.gradle/caches/modules-2/files-2.1'
+
 - task: Gradle@2
   inputs:
-    workingDirectory: ''
     gradleWrapperFile: 'gradlew'
-    gradleOptions: '-Xmx4096m'
-    javaHomeOption: 'JDKVersion'
-    jdkVersionOption: '1.11'
-    jdkArchitectureOption: 'x64'
+    tasks: 'build'
     publishJUnitResults: true
     testResultsFiles: '**/TEST-*.xml'
-    tasks: 'build'
+    javaHomeOption: 'JDKVersion'
+    jdkVersionOption: '1.11'
+    gradleOptions: '-Xmx4096m'
+    sonarQubeRunAnalysis: false
+    pmdRunAnalysis: true
+    spotBugsAnalysis: false
+
+
