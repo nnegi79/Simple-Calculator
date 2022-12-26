@@ -18,10 +18,19 @@ buildscript {
 
 allprojects {
     repositories {
-        google()
-        jcenter()
-        maven { url "https://jitpack.io" }
+      //  google()
+       // jcenter()
+        // maven { url "https://jitpack.io" }
+        maven {
+                url 'https://pkgs.dev.azure.com/Suchkan/_packaging/My-demo-Feed/maven/v1'
+                name 'My-demo-Feed'
+                authentication {
+                basic(BasicAuthentication)
+             }
+        }
     }
+    
+    
 }
 
 task clean(type: Delete) {
