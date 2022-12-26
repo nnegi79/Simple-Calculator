@@ -11,11 +11,11 @@ pool:
 
 steps:
 
-- task: Cache@2
-  displayName: "Cache Packages"
-  inputs:
-    key: 'gradle-cache'
-    path: '$(System.DefaultWorkingDirectory)/.gradle/caches/modules-2/files-2.1'
+#- task: Cache@2
+#  displayName: "Cache Packages"
+#  inputs:
+#    key: 'gradle-cache'
+#    path: '$(System.DefaultWorkingDirectory)/.gradle/caches/modules-2/files-2.1'
 
 - task: Gradle@2
   inputs:
